@@ -24,6 +24,18 @@ This extension uses a **stateless, client-side pipeline**. No data is saved betw
 
 As Crunchyroll does not have a public API, the system will work by having the user sign in to their account on a browser, giving that browser session access to Crunchyroll's internal API via the users active account. Allowing the data to be accessed.
 
+## Repository Structure
+
+```text
+|-- manifest.json       # Extension manifest (Manifest V3)
+|-- assets/icons/       # Extension toolbar and icons
+|-- lib/                # Third-party libraries (Chart.js)
+|-- src/
+    |-- popup/          # Extension popup UI (HTML, CSS, DOM logic)
+    |-- utils/          # API fetching and data-cleaning modules
+```
+
+
 ## Known limitations
 
 - Browser extension requires user to log in to their Crunchyroll account on that browser so there is an active session before any of the data can be accessed
