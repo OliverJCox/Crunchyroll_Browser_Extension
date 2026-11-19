@@ -2,6 +2,8 @@
 
 This repository contains a browser extension for Firefox and Google Chrome which provides information about streaming patterns on Crunchyroll.
 
+**This is an unofficial, fan made project and has no affiliation with Crunchyroll.**
+
 ## Aims of this repository
 
 This project has two key aims:
@@ -14,6 +16,14 @@ Languages: **HTML**, **CSS**, **JavaScript**
 Development environment: **VSCode**  
 Key libraries: **Chart.js**  
 
+## Security Notice
+
+This extension uses your active browser session to authenticate requests to Crunchyroll's internal API. While installed and active, it effectively shares the same account access as a signed-in browser session on Crunchyroll. 
+
+- **Local Processing Only:** All data fetching and analysis happen entirely locally within your browser. 
+- **No Data Collection:** Your session cookies, access tokens, and watch history are never stored permanently or transmitted to any external servers.
+
+
 ## System Architecture
 
 This extension uses a **stateless, client-side pipeline**. No data is saved between sessions, and all processing happens locally in the browser:
@@ -23,6 +33,20 @@ This extension uses a **stateless, client-side pipeline**. No data is saved betw
 3. **UI Rendering:** Updates the popup HTML and generates visual charts using Chart.js.
 
 As Crunchyroll does not have a public API, the system will work by having the user sign in to their account on a browser, giving that browser session access to Crunchyroll's internal API via the users active account. Allowing the data to be accessed.
+
+```mermaid
+flowchart LR
+    A[User clicks extension icon] --> B[popup.js triggers fetchWatchHistory]
+    B --> C[api.js sends POST to /auth/v1/token]
+    C -- Browser attaches etp_rt cookie --> D{Valid Crunchyroll session?}
+    D -- No --> E[Show 'Please log in' error in UI]
+    D -- Yes --> F[Receive Bearer access_token & account_id]
+    F --> G[api.js sends GET to /watch-history with Bearer token]
+    G --> H[Receive raw watch history JSON]
+    H --> I[analyser.js filters metadata & calculates stats]
+    I --> J[popup.js updates HTML DOM & renders Chart.js visuals]
+```
+
 
 ## Repository Structure
 
@@ -38,7 +62,7 @@ As Crunchyroll does not have a public API, the system will work by having the us
 
 ## Known limitations
 
-- Browser extension requires user to log in to their Crunchyroll account on that browser so there is an active session before any of the data can be accessed
+- Browser extension requires user to log in to their Crunchyroll account on that browser so there is an active session cookie before any of the data can be accessed
 - No compatibility with Google Chrome on Android due to extensions not being supported
 - No compatibility with IOS due to operating system and app store policy restrictions
 
