@@ -29,8 +29,6 @@ async function getAuthSession() {
     });
 
     if (!response.ok) {
-        const body = await response.text();
-        console.error('Auth response body:', body);
         throw new Error(`Auth failed (${response.status}). Make sure you are signed into Crunchyroll.`);
     }
 
