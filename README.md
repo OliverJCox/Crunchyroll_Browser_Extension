@@ -48,6 +48,25 @@ flowchart LR
 ```
 
 
+## Functionality
+
+The extension should present the following analyses of the streaming history:
+- Total number of hours watched
+- Most watched genre
+- Sub vs dub percentage (Pie chart)
+- Total number of episodes watched
+- Top 5 most watched shows by time watched (Graph)
+- Last watched episode
+- Number of unique shows watched
+
+It should have the following filters:
+- Date
+- Day of week
+- Genre
+
+
+
+
 ## Repository Structure
 
 ```text
