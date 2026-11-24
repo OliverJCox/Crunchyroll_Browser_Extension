@@ -75,7 +75,7 @@ It should have the following filters:
 |-- lib/                # Third-party libraries (Chart.js)
 |-- src/
     |-- popup/          # Extension popup UI (HTML, CSS, DOM logic)
-    |-- utils/          # API fetching and data-cleaning modules
+    |-- utils/          # API fetching and data-cleaning/analysis modules
 ```
 
 
