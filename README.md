@@ -56,7 +56,7 @@ The extension should present the following analyses of the streaming history:
 - Sub vs dub percentage (Pie chart)
 - Total number of episodes watched
 - Top 5 most watched shows by time watched (Graph)
-- Last watched episode
+- Last episode watched
 - Number of unique shows watched
 
 It should have the following filters:
@@ -84,5 +84,6 @@ It should have the following filters:
 - Browser extension requires user to log in to their Crunchyroll account on that browser so there is an active session cookie before any of the data can be accessed
 - No compatibility with Google Chrome on Android due to extensions not being supported
 - No compatibility with IOS due to operating system and app store policy restrictions
+- Extension doesn't dynamically update if you watch shows with it open, has to be closed and re-opened
 
 
